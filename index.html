@@ -1,0 +1,107 @@
+<div class="form-container">
+  <div class="container">
+    <div>
+      <label for="pageviews">Pageviews per day:</label>
+      <input type="text" id="pageviews" name="pageviews">
+    </div>
+    <div>
+      <label for="ctr">CTR (%):</label>
+      <input type="text" id="ctr" name="ctr">
+    </div>
+    <div>
+      <label for="cpc">CPC ($):</label>
+      <input type="text" id="cpc" name="cpc">
+    </div>
+    <div>
+      <button id="calculate">Calculate</button>
+    </div>
+    <div class="earningsection">
+      <p>Earnings per day: $<span id="earnings"></span></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .form-container {
+    width: 100%;
+  }
+
+  .container {
+    
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  div > label {
+  display: block;
+  margin-bottom: 10px;
+}
+  
+  .container div + div {
+    margin-top: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  input[type="text"] {
+    padding: 5px 10px;
+    font-size: 16px;
+    width: 400px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  
+  .earningsection {
+    background-color: rgb(13, 2, 70);
+    padding: 20px;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  #earnings {
+    color: rgb(249, 249, 249);
+    font-size: 20px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+</style>
+
+
+
+
+  <script>
+    const calculateBtn = document.getElementById("calculate");
+const pageviewsInput = document.getElementById("pageviews");
+const ctrInput = document.getElementById("ctr");
+const cpcInput = document.getElementById("cpc");
+const earningsSpan = document.getElementById("earnings");
+
+calculateBtn.addEventListener("click", function() {
+  const pageviews = parseInt(pageviewsInput.value);
+  const ctr = parseFloat(ctrInput.value) / 100;
+  const cpc = parseFloat(cpcInput.value);
+  
+  const earnings = pageviews * ctr * cpc;
+  earningsSpan.innerText = earnings.toFixed(2);
+});
+
+  </script>
